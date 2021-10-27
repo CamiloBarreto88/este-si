@@ -25,7 +25,7 @@ import javax.persistence.Table;
 public class Gama implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idGama;
     private String name;
     private String description;
     
@@ -34,11 +34,11 @@ public class Gama implements Serializable {
     private List<Car> cars;
 
     public Integer getId() {
-        return id;
+        return idGama;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idGama = id;
     }
 
     public String getName() {

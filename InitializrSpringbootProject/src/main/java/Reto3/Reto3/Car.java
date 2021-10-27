@@ -28,7 +28,7 @@ public class Car implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idCar;
     private String name;
     private String brand;
     private Integer year;
@@ -48,11 +48,11 @@ public class Car implements Serializable{
     private List<Reservaciones> reservations;
 
     public Integer getId() {
-        return id;
+        return idCar;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idCar = id;
     }
 
     public String getName() {
