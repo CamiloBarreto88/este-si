@@ -1,10 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto3.Reto3;
+package tutoria.Web;
 
+import tutoria.Modelo.Carro;
+import tutoria.Servicios.ServiciosCarro;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,38 +24,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author DELL
+ * @author USUARIO
  */
 @RestController
-@RequestMapping("/api/Gama")
-@CrossOrigin(origins="*",methods={RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-public class ControladorGama {
+@RequestMapping("/api/Car")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+public class CarroWeb {
+     @GetMapping("/holaMundo")
+    public String saludad(){
+    return "Hola Mundo Tutoria";
+    }
+
     @Autowired
-    private ServiciosGama servicio;
-    
-    @GetMapping("/all")
-    public List<Gama> getGamas(){
+    private ServiciosCarro servicio;
+    @GetMapping("all")
+    public List <Carro> getCarro(){
         return servicio.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Gama> getGama(@PathVariable("id") int gamaId){
-        return servicio.getGama(gamaId);
+    public Optional<Carro> getOrthesis(@PathVariable("id") int idCarro) {
+        return servicio.getCarro(idCarro);
     }
-    
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Gama save(@RequestBody Gama gama){
-        return servicio.save(gama);
+    public Carro save(@RequestBody Carro carro) {
+        return servicio.save(carro);
     }
-    @PutMapping("/update")
+    
+     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Gama update(@RequestBody Gama gama){
-        return servicio.update(gama);
+    public Carro update(@RequestBody Carro carro) {
+        return servicio.update(carro);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int gamaId){
-        return servicio.deleteGama(gamaId);
+    public boolean delete(@PathVariable("id") int carroId) {
+        return servicio.deleteCarro(carroId);
     }
 }

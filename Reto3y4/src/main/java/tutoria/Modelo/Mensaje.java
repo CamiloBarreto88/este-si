@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto3.Reto3;
+package tutoria.Modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
@@ -17,25 +16,24 @@ import javax.persistence.Table;
 
 /**
  *
- * @author DELL
+ * @author USUARIO
  */
 @Entity
 @Table(name = "message")
-public class Mensaje implements Serializable{
-    
+public class Mensaje implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
     private String messageText;
-    
+
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties({"messages", "client", "reservations"})
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Carro car;
-    
+
     @ManyToOne
     @JoinColumn(name="clientId")
-    @JsonIgnoreProperties({"messages", "reservations", "client"})
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Cliente client;
 
     public Integer getIdMessage() {
@@ -69,7 +67,6 @@ public class Mensaje implements Serializable{
     public void setClient(Cliente client) {
         this.client = client;
     }
-    
     
     
 }

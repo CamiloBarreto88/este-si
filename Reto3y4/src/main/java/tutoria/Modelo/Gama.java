@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto3.Reto3;
+package tutoria.Modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
@@ -12,33 +11,33 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Id;
 
 /**
  *
- * @author DELL
+ * @author Tutoria del Sabado
  */
 @Entity
 @Table(name = "gama")
 public class Gama implements Serializable {
-    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy=GenerationType.IDENTITY)
     private Integer idGama;
     private String name;
+    
     private String description;
     
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="gama")
-    @JsonIgnoreProperties("gama")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="gama")
+    @JsonIgnoreProperties({"gama","message"})
     private List<Carro> cars;
 
     public Integer getIdGama() {
         return idGama;
     }
 
-    public void setIdGama(Integer idGama) {
+    public void setId(Integer idGama) {
         this.idGama = idGama;
     }
 
@@ -62,9 +61,16 @@ public class Gama implements Serializable {
         return cars;
     }
 
-    public void setCars(List<Carro> cars) {
-        this.cars = cars;
-    } 
+    public void setFarms(List<Carro> farms) {
+        this.cars = farms;
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
 }

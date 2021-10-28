@@ -19,10 +19,11 @@ public class RepositorioMensaje {
     
     @Autowired
     private InterfaceMensaje crud3;
+    
     public List<Mensaje> getAll(){
         return (List<Mensaje>) crud3.findAll();
     }
-    public Optional<Mensaje> getMessage(int id){
+    public Optional<Mensaje> getMensaje(int id){
         return crud3.findById(id);
     }
     public Mensaje save(Mensaje message){

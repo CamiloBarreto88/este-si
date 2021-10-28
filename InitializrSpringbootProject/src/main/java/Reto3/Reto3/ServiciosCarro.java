@@ -16,31 +16,32 @@ import org.springframework.stereotype.Service;
  * @author DELL
  */
 @Service
-public class ServiciosCar {
+public class ServiciosCarro {
     @Autowired
-    private RepositorioCar metodosCrud;
+    private RepositorioCarro metodosCrud;
     
-    public List<Car> getAll(){
+    public List<Carro> getAll(){
         return metodosCrud.getAll();
     }
-    public Optional<Car> getCar(int carId){
-        return metodosCrud.getCar(carId);
+    public Optional<Carro> getCar(int idCarro){
+        return metodosCrud.getCarro(idCarro);
     }
-    public Car save(Car car){
-        if(car.getId()==null){
+    
+    public Carro save(Carro car){
+        if(car.getIdCar()==null){
             return metodosCrud.save(car);
         } else {
-            Optional<Car> e=metodosCrud.getCar(car.getId());
-            if(!e.isPresent()) {
+            Optional<Carro> e=metodosCrud.getCarro(car.getIdCar());
+            if(!e.isPresent()){
                 return metodosCrud.save(car);
             } else {
                 return car;
             }
         }
     }
-    public Car update (Car car){
-        if(car.getId()!=null){
-            Optional<Car> e=metodosCrud.getCar(car.getId());
+    public Carro update (Carro car){
+        if(car.getIdCar()!=null){
+            Optional<Carro> e=metodosCrud.getCarro(car.getIdCar());
             if(e.isPresent()){
                 if(car.getName()!=null){
                     e.get().setName(car.getName());

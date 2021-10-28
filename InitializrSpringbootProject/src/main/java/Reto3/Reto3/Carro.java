@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -24,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "car")
-public class Car implements Serializable{
+public class Carro implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,19 +40,19 @@ public class Car implements Serializable{
     private Gama gama;
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "car")
-    @JsonIgnoreProperties({"car", "client"})
+    @JsonIgnoreProperties({"car","client"})
     private List<Mensaje> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "car")
-    @JsonIgnoreProperties({"car", "client"})
+    @JsonIgnoreProperties({"car","message"})
     private List<Reservaciones> reservations;
 
-    public Integer getId() {
+    public Integer getIdCar() {
         return idCar;
     }
 
-    public void setId(Integer id) {
-        this.idCar = id;
+    public void setIdCar(Integer idCar) {
+        this.idCar = idCar;
     }
 
     public String getName() {
@@ -109,8 +109,5 @@ public class Car implements Serializable{
 
     public void setReservations(List<Reservaciones> reservations) {
         this.reservations = reservations;
-    }
-    
-    
-    
+    }    
 }

@@ -28,9 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/Message")
 @CrossOrigin(origins = "*",methods={RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
 public class ControladorMensaje {
     @Autowired
     private ServiciosMensaje servicio;
+    
     @GetMapping("/all")
     public List<Mensaje> getMessages(){
         return servicio.getAll();
@@ -47,7 +49,7 @@ public class ControladorMensaje {
         return servicio.save(message);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensaje update(@RequestBody Mensaje message){
         return servicio.update(message);

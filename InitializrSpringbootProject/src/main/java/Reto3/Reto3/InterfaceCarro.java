@@ -12,6 +12,6 @@ import org.springframework.data.repository.CrudRepository;
  * @author DELL
  */
 
-public interface InterfaceCar extends CrudRepository<Car, Integer> {
+public interface InterfaceCarro extends CrudRepository<Carro, Integer> {
     
 }

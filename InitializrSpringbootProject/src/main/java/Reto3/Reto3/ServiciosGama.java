@@ -16,21 +16,20 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ServiciosGama {
-    
     @Autowired
     private RepositorioGama metodosCrud;
     
     public List<Gama> getAll() {
         return metodosCrud.getAll();
     }
-    public Optional<Gama> getGama(int GamaId){
-        return metodosCrud.getGama(GamaId);
+    public Optional<Gama> getGama(int gamaId){
+        return metodosCrud.getGama(gamaId);
     }
     public Gama save(Gama gama){
-        if (gama.getId()==null) {
+        if (gama.getIdGama()==null) {
             return metodosCrud.save(gama);
         } else {
-            Optional<Gama> gama1 = metodosCrud.getGama(gama.getId());
+            Optional<Gama> gama1 = metodosCrud.getGama(gama.getIdGama());
             if (!gama1.isPresent()){
                 return metodosCrud.save(gama);
             } else {
@@ -40,27 +39,31 @@ public class ServiciosGama {
     }
     
     public Gama update(Gama gama){
-        if(gama.getId()!=null){
-            Optional<Gama>g=metodosCrud.getGama(gama.getId());
-            if(g.isPresent()){
-                if(gama.getDescription()!=null){
-                    g.get().setDescription(gama.getDescription());
-                }
+        if(gama.getIdGama()!=null){
+            Optional<Gama>gama1=metodosCrud.getGama(gama.getIdGama());
+            if(gama1.isPresent()){
                 if(gama.getName()!=null){
-                    g.get().setName(gama.getName());
+                    gama1.get().setName(gama.getName());
+                }               
+                if(gama.getDescription()!=null){
+                    gama1.get().setDescription(gama.getDescription());
                 }
-                return metodosCrud.save(g.get());
+                metodosCrud.save(gama1.get());
+                return gama1.get();
+            } else {
+                return gama;
             }
+        } else {
+            return gama;
         }
-        return gama;
     }
     
-    public boolean deletegama(int gamaId){
-        Boolean d=getGama(gamaId).map(gama -> {
+    public boolean deleteGama(int gamaId){
+        Boolean aBoolean=getGama(gamaId).map(gama -> {
             metodosCrud.delete(gama);
             return true;
         }).orElse(false);
-        return d;
+        return aBoolean;
     }
     
 }

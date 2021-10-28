@@ -15,25 +15,25 @@ import org.springframework.stereotype.Repository;
  * @author DELL
  */
 @Repository
-public class RepositorioCar {
+public class RepositorioCarro {
     
     @Autowired
-    private InterfaceCar crud;
+    private InterfaceCarro crud1;
     
-    public List<Car> getAll(){
-        return (List<Car>) crud.findAll();
+    public List<Carro> getAll(){
+        return (List<Carro>) crud1.findAll();
     }
     
-    public Optional<Car> getCar(int id){
-        return crud.findById(id);
+    public Optional<Carro> getCarro(int id){
+        return crud1.findById(id);
     }
     
-    public Car save(Car car){
-        return crud.save(car);
+    public Carro save(Carro carro){
+        return crud1.save(carro);
     }   
     
-    public void delete(Car car){
-        crud.delete(car);
+    public void delete(Carro carro){
+        crud1.delete(carro);
     }
     
 }

@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto3.Reto3;
+package tutoria.Modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
@@ -15,34 +14,32 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 
 /**
  *
- * @author DELL
+ * @author USUARIO
  */
 @Entity
-@Table(name = "reservation")
-public class Reservaciones implements Serializable{
-    
-    @Id
+@Table(name ="reservation")
+public class Reservacion implements Serializable {
+       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
     private String status="created";
-    
+           
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties("reservations")
     private Carro car;
     
     @ManyToOne
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"reservations", "messages"})
+    @JoinColumn(name = "idCliente")
+    @JsonIgnoreProperties({"reservations","messages"})
     private Cliente client;
     
-    private String score; 
+    private String score;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -98,5 +95,8 @@ public class Reservaciones implements Serializable{
 
     public void setScore(String score) {
         this.score = score;
-    }   
+    }
+    
+    
+    
 }

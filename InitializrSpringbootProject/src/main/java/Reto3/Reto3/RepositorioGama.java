@@ -16,19 +16,21 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class RepositorioGama {
+    
     @Autowired
-    private InterfaceGama crud;
+    private InterfaceGama crud1;
+    
     public List<Gama> getAll(){
-        return (List<Gama>) crud.findAll();
+        return (List<Gama>) crud1.findAll();
     }
     public Optional<Gama> getGama(int id){
-        return crud.findById(id);
+        return crud1.findById(id);
     }
-    public Gama save(Gama Gama){
-        return crud.save(Gama);
+    public Gama save(Gama gama){
+        return crud1.save(gama);
     }
-    public void delete (Gama Gama){
-        crud.delete(Gama);
+    public void delete (Gama gama){
+        crud1.delete(gama);
     }
     
 }

@@ -26,35 +26,36 @@ import org.springframework.web.bind.annotation.RestController;
  * @author DELL
  */
 @RestController
-@RequestMapping("/api/Gama")
-@CrossOrigin(origins="*",methods={RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-public class ControladorGama {
+@RequestMapping("/api/Car")
+@CrossOrigin(origins = "*", methods={RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
+public class ControladorCarro {
     @Autowired
-    private ServiciosGama servicio;
+    private ServiciosCarro servicio;
     
     @GetMapping("/all")
-    public List<Gama> getGamas(){
+    public List<Carro> getCarro(){
         return servicio.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Gama> getGama(@PathVariable("id") int gamaId){
-        return servicio.getGama(gamaId);
+    public Optional<Carro> getOrthesis(@PathVariable("id") int idCarro) {
+        return servicio.getCar(idCarro);
     }
     
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Gama save(@RequestBody Gama gama){
-        return servicio.save(gama);
+    public Carro save(@RequestBody Carro car){
+        return servicio.save(car);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Gama update(@RequestBody Gama gama){
-        return servicio.update(gama);
+    public Carro update(@RequestBody Carro car){
+        return servicio.update(car);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/(id)")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int gamaId){
-        return servicio.deleteGama(gamaId);
-    }
+    public boolean delete(@PathVariable("id") int carId){
+        return servicio.deleteCar(carId);
+    }  
 }

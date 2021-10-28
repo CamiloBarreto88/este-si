@@ -29,9 +29,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/Reservation")
 @CrossOrigin(origins="*",methods={RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
 public class ControladorReservaciones{
     @Autowired
     private ServiciosReservaciones servicio;
+    
     @GetMapping("/all")
     public List<Reservaciones> getReservations(){
         return servicio.getAll();
@@ -40,6 +42,7 @@ public class ControladorReservaciones{
     public Optional<Reservaciones> getReservation(@PathVariable("id") int reservationId){
         return servicio.getReservation(reservationId);
     }
+    
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservaciones save(@RequestBody Reservaciones reservation){
